@@ -46,3 +46,8 @@ const inputTextStyle = TextStyle(
   fontFamily: 'Montserrat',
   color: Colors.black54,
 );
+
+const linkTextStyle = TextStyle(
+  fontSize: 18,
+  fontFamily: 'Montserrat',
+);

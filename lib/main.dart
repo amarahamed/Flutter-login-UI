@@ -51,12 +51,12 @@ class LoginBody extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 80,
+              height: 68,
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  height: itemHeight,
+                  height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -64,51 +64,112 @@ class LoginBody extends StatelessWidget {
                       topRight: Radius.circular(80),
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 60,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xFF001064).withOpacity(0.12),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFF001064).withOpacity(0.12),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 3),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              TextField(
+                                decoration: textFieldDecoration.copyWith(
+                                  hintText: 'Username',
                                 ),
-                              ],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16)),
+                              ),
+                              Container(
+                                height: 1.6,
+                                color: Color(0xFFCCCCCC).withOpacity(0.6),
+                                width: double.infinity,
+                              ),
+                              TextField(
+                                obscureText: true,
+                                decoration: textFieldDecoration.copyWith(
+                                    hintText: 'Password'),
+                              ),
+                            ],
+                          ),
+                        ), // Text Field Container
+                        SizedBox(
+                          height: 34,
+                        ),
+                        SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print('Login button pressed');
+                            },
+                            child: Text(
+                              'LOGIN',
+                              style:
+                                  inputTextStyle.copyWith(color: Colors.white),
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                                TextField(
-                                  decoration: textFieldDecoration.copyWith(
-                                    hintText: 'Username',
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Color(0xFF001064).withOpacity(0.86)),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: Center(
+                            child: InkWell(
+                              child: Text(
+                                'Forgot Password',
+                                style: linkTextStyle,
+                              ),
+                              onTap: () {
+                                print('Forgot password link tapped');
+                              },
+                            ),
+                          ),
+                        ), // Forgot Password link
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: Center(
+                            child: InkWell(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    'Don’t have an account yet ?  ',
+                                    style: linkTextStyle,
                                   ),
-                                ),
-                                Container(
-                                  height: 1.6,
-                                  color: Color(0xFFCCCCCC).withOpacity(0.6),
-                                  width: double.infinity,
-                                ),
-                                TextField(
-                                  obscureText: true,
-                                  decoration: textFieldDecoration.copyWith(
-                                      hintText: 'Password'),
-                                ),
-                              ],
+                                  Text(
+                                    'Sign up',
+                                    style: linkTextStyle.copyWith(
+                                      color: Color(0xFF4757E9),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              onTap: () {
+                                print('Sign up link tapped');
+                              },
                             ),
                           ),
-                        ],
-                      ),
+                        ), // Sign Up Link
+                      ],
                     ),
                   ),
                 ),
