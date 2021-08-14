@@ -14,14 +14,13 @@ var scaffoldGraadient = BoxDecoration(
 );
 
 const largeTextStyle = TextStyle(
-  fontSize: 48,
+  fontSize: 42,
   fontFamily: 'Montserrat',
   color: Colors.white,
-  letterSpacing: 1.4,
 );
 
 const mediumTextStyle = TextStyle(
-  fontSize: 22,
+  fontSize: 20,
   fontFamily: 'Montserrat',
   color: Colors.white,
   letterSpacing: 1.2,
@@ -36,18 +35,23 @@ var textFieldDecoration = InputDecoration(
     horizontal: 14,
   ),
   hintStyle: TextStyle(
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: 'Montserrat',
   ),
 );
 
 const inputTextStyle = TextStyle(
-  fontSize: 22,
+  fontSize: 18,
   fontFamily: 'Montserrat',
   color: Colors.black54,
 );
 
 const linkTextStyle = TextStyle(
-  fontSize: 18,
+  fontSize: 16,
   fontFamily: 'Montserrat',
+);
+const bottomlinkTextStyle = TextStyle(
+  fontSize: 13,
+  fontFamily: 'Montserrat',
+  color: Color(0xFF4C5AA6),
 );

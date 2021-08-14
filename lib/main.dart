@@ -1,4 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:login_ui_2/text_animation.dart';
 import 'package:login_ui_2/utilities.dart';
 
 void main() {
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.transparent,
         body: LoginBody(),
@@ -22,9 +25,6 @@ class MyApp extends StatelessWidget {
 class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
     return SafeArea(
       child: Container(
         decoration: scaffoldGraadient,
@@ -32,45 +32,52 @@ class LoginBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(24, 42, 24, 0),
+              padding: EdgeInsets.fromLTRB(0, 40, 24, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text(
-                    'Login',
-                    style: largeTextStyle,
+                  SlideAnimation(
+                    durationInMS: 500,
+                    paddingValue: 24,
+                    animationChild: Text(
+                      'Login',
+                      style: largeTextStyle,
+                    ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Great to have you back',
-                    style: mediumTextStyle,
+                  SlideAnimation(
+                    durationInMS: 500,
+                    paddingValue: 24,
+                    animationChild: Text(
+                      'Great to have you back',
+                      style: mediumTextStyle,
+                    ),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 68,
+              height: 60,
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(80),
-                      topRight: Radius.circular(80),
-                    ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70),
+                    topRight: Radius.circular(70),
                   ),
+                ),
+                child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         SizedBox(
-                          height: 60,
+                          height: 40,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -88,6 +95,10 @@ class LoginBody extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               TextField(
+                                cursorColor: Color(0xFF001064),
+                                textInputAction: TextInputAction.next,
+                                cursorWidth: 1.6,
+                                cursorHeight: 22,
                                 decoration: textFieldDecoration.copyWith(
                                   hintText: 'Username',
                                 ),
@@ -98,6 +109,10 @@ class LoginBody extends StatelessWidget {
                                 width: double.infinity,
                               ),
                               TextField(
+                                cursorColor: Color(0xFF001064),
+                                textInputAction: TextInputAction.done,
+                                cursorWidth: 1.6,
+                                cursorHeight: 22,
                                 obscureText: true,
                                 decoration: textFieldDecoration.copyWith(
                                     hintText: 'Password'),
@@ -110,20 +125,26 @@ class LoginBody extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 50,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              print('Login button pressed');
-                            },
-                            child: Text(
-                              'LOGIN',
-                              style:
-                                  inputTextStyle.copyWith(color: Colors.white),
-                            ),
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Color(0xFF001064).withOpacity(0.86)),
+                          child: SlideAnimation(
+                            durationInMS: 1000,
+                            paddingValue: 0,
+                            animationChild: ElevatedButton(
+                              onPressed: () {
+                                print('Login button pressed');
+                              },
+                              child: Text(
+                                'LOGIN',
+                                style: inputTextStyle.copyWith(
+                                    color: Colors.white),
+                              ),
+                              style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color(0xFF001064).withOpacity(0.86)),
+                              ),
                             ),
                           ),
                         ),
@@ -131,9 +152,13 @@ class LoginBody extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Center(
                             child: InkWell(
-                              child: Text(
-                                'Forgot Password',
-                                style: linkTextStyle,
+                              child: SlideAnimation(
+                                durationInMS: 1000,
+                                paddingValue: 0,
+                                animationChild: Text(
+                                  'Forgot Password',
+                                  style: linkTextStyle,
+                                ),
                               ),
                               onTap: () {
                                 print('Forgot password link tapped');
@@ -141,9 +166,11 @@ class LoginBody extends StatelessWidget {
                             ),
                           ),
                         ), // Forgot Password link
+
                         SizedBox(
                           height: 20,
                         ),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Center(
@@ -151,14 +178,22 @@ class LoginBody extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(
-                                    'Don’t have an account yet ?  ',
-                                    style: linkTextStyle,
+                                  SlideAnimation(
+                                    durationInMS: 1000,
+                                    paddingValue: 0,
+                                    animationChild: Text(
+                                      'Don’t have an account yet ?  ',
+                                      style: linkTextStyle,
+                                    ),
                                   ),
-                                  Text(
-                                    'Sign up',
-                                    style: linkTextStyle.copyWith(
-                                      color: Color(0xFF4757E9),
+                                  SlideAnimation(
+                                    durationInMS: 1000,
+                                    paddingValue: 0,
+                                    animationChild: Text(
+                                      'Sign up',
+                                      style: linkTextStyle.copyWith(
+                                        color: Color(0xFF4757E9),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -168,7 +203,51 @@ class LoginBody extends StatelessWidget {
                               },
                             ),
                           ),
-                        ), // Sign Up Link
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                InkWell(
+                                  child: Text(
+                                    'Privacy Policy',
+                                    style: bottomlinkTextStyle,
+                                  ),
+                                  onTap: () {
+                                    print('Privacy policy link pressed');
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    'Cookie Policy',
+                                    style: bottomlinkTextStyle,
+                                  ),
+                                  onTap: () {
+                                    print('Cookie policy link pressed');
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    'Copyright Policy',
+                                    style: bottomlinkTextStyle,
+                                  ),
+                                  onTap: () {
+                                    print('Copyright policy link pressed');
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        // Sign Up Link
                       ],
                     ),
                   ),
